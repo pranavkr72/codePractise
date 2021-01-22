@@ -1,0 +1,55 @@
+Move all negative numbers to beginning and positive to end with constant extra space
+
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cin>>n;
+    int arr[n+1];
+    
+    for(int i =0;i<n;i++)
+    {
+        cin>>arr[i];
+        
+    }
+	   
+    
+	int rightPointer= n-1;
+	int leftPointer = 0;
+	
+	while(leftPointer<=rightPointer)
+	{
+	    if(arr[leftPointer]<0 &&arr[rightPointer]<0)
+	    {
+	        leftPointer ++;
+	    }
+	    else if(arr[leftPointer]>0&&arr[rightPointer]<0)
+	    {
+	        int temp =arr[leftPointer];
+	        arr[leftPointer]=arr[rightPointer];
+	        arr[rightPointer]=temp;
+	        rightPointer --;
+	        leftPointer ++;
+	    }
+	    else if (arr[leftPointer]>0 && arr[rightPointer]>0)
+	    {
+	        
+	        rightPointer --;
+	    }
+	    else
+	    {
+	        leftPointer ++;
+	        rightPointer --;
+	        
+	    }
+	}
+     	for(int i=0;i<n;i++)
+        	cout<<arr[i]<<" ";
+	
+	
+	
+	
+	return 0;
+}
